@@ -1,4 +1,4 @@
-package adpagent
+package main
 
 import (
 	"god"

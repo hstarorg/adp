@@ -1,14 +1,13 @@
-package god 
+package god
 
 import (
-	"fmt"
 	"net/http"
 )
 
 type God struct {
-	debug           bool
-	name            string
-	middleware      []HandlerFunc
+	debug      bool
+	name       string
+	middleware []HandlerFunc
 }
 
 // 定义中间件
@@ -36,11 +35,8 @@ func (b *God) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	res.Write([]byte("xxx"))
 }
 
-func (god *God) run(server *http.Server, files ...string) {
+func (god *God) run(server *http.Server) {
 	server.Handler = god
-	if len(files) == 0 {
-		println("Listen %s", server.Addr)
-	}else {
-		panic("invalid TLS configuration")
-	}
+	println("Listen %s", server.Addr)
+	server.ListenAndServe()	
 }
