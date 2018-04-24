@@ -7,7 +7,7 @@ import (
 type God struct {
 	debug      bool
 	name       string
-	middleware []HandlerFunc
+	middlewares []HandlerFunc
 }
 
 // 定义中间件
@@ -18,7 +18,7 @@ type HandlerFunc func(*Context)
 
 func New() *God {
 	god := new(God)
-	god.middleware = make([]HandlerFunc, 0)
+	god.middlewares = make([]HandlerFunc, 0)
 	return god
 }
 
@@ -31,8 +31,13 @@ func (god *God) Listen(addr string) {
 	god.run(god.Server(addr))
 }
 
-func (b *God) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+func (god *God) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	res.Write([]byte("xxx"))
+}
+
+func (god *God) Use(middleware HandlerFunc) *God {
+	god.middlewares = append(god.middlewares, middleware)
+	return god;
 }
 
 func (god *God) run(server *http.Server) {
