@@ -1,27 +1,26 @@
 package god
 
 type Router struct {
-	
 }
 
-func (r *Router) Get(){
-	
-}
-
-func (r *Router) Post(){
+func (r *Router) Get() {
 
 }
 
-func (r *Router) Put(){
-	
+func (r *Router) Post() {
+
 }
 
-func (r *Router) Delete(){
-	
+func (r *Router) Put() {
+
 }
 
-func (r *Router) Routes() HandlerFunc{
-	return func(ctx *Context){
+func (r *Router) Delete() {
 
+}
+
+func (r *Router) Routes() HandlerFunc {
+	return func(ctx *Context) {
+		ctx.res.Write([]byte("aaaaaaaaaaaaaaa"))
 	}
 }

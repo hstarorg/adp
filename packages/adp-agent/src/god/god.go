@@ -5,8 +5,8 @@ import (
 )
 
 type God struct {
-	debug      bool
-	name       string
+	debug       bool
+	name        string
 	middlewares []HandlerFunc
 }
 
@@ -31,17 +31,27 @@ func (god *God) Listen(addr string) {
 	god.run(god.Server(addr))
 }
 
+func parseRequest(req *http.Request) *Request {
+	return new(Request)
+}
+
 func (god *God) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	res.Write([]byte("xxx"))
+	ctx := new(Context)
+	ctx.handlers = god.middlewares
+	ctx.req = req
+	ctx.res = res
+	ctx.request = parseRequest(req)
+	ctx.Next()
+	// res.Write([]byte("xxx"))
 }
 
 func (god *God) Use(middleware HandlerFunc) *God {
 	god.middlewares = append(god.middlewares, middleware)
-	return god;
+	return god
 }
 
 func (god *God) run(server *http.Server) {
 	server.Handler = god
 	println("Listen %s", server.Addr)
-	server.ListenAndServe()	
+	server.ListenAndServe()
 }

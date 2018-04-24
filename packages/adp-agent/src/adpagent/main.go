@@ -4,14 +4,14 @@ import (
 	"god"
 )
 
-func XXX(ctx *god.Context){
+func XXX(ctx *god.Context) {
 
 }
 
-func main(){
+func main() {
 	app := god.New()
 	// 定义Router
-	router:= new(god.Router)
+	router := new(god.Router)
 	// 加载路由
 	app.Use(router.Routes())
 	// 启动程序
