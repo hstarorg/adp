@@ -1,0 +1,14 @@
+{
+  "name": "adpagent2",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.go",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "go run main.go",
+    "build": "go build -tags=jsoniter ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

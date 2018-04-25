@@ -20,3 +20,5 @@
 ```
 
 其中 `go.toolsGopath` 用来安装 GO 开发的一系列工具（VSC 会自动提示安装）；`go.gopath` 一般设置为当前项目的根目录。
+
+5、在环境变量中设置 `GOPATH`，可以设置多个值，如：`GOPATH=xxx;E:\MyCodeLibrary\adp\packages\adp-agent`

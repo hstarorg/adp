@@ -1,0 +1,6 @@
+package: adpagent2
+import:
+- package: gopkg.in/baa.v1
+  version: v1.2.31
+- package: github.com/gorilla/websocket
+  version: v1.2.0
