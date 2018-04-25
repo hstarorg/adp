@@ -1,11 +1,13 @@
 package main
 
 import (
+	"adpagent2/router"
+
 	"gopkg.in/baa.v1"
 )
 
 func main() {
 	app := baa.New()
-	Router(app)
+	router.AttachToApp(app)
 	app.Run(":7777")
 }
