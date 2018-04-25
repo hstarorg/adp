@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "go run main.go",
-    "build": "go build -tags=jsoniter ."
+    "build": "go build -tags=jsoniter .",
+    "fmt": "gofmt -e -w ."
   },
   "keywords": [],
   "author": "",
